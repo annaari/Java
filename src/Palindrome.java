@@ -6,22 +6,23 @@ class Palindrome {
         return args.length;
     }
 
-    private static void palindrom(String[] args){
+    public static void palindrom(String[] args) {
         Scanner be = new Scanner(System.in);
         String x = be.nextLine();
-        char[] ch  = x.toCharArray();
+        char[] ch = x.toCharArray();
         int i = 0;
-        int j = lenght(args)-1;
+        int j = lenght(args) - 1;
         boolean van = true;
-        while(i<j && van)
-        {
-            if(ch[i] != ch[j])
+        while (i < j && van) {
+            if (ch[i] != ch[j])
                 van = false;
-            i++; j--;
+            i++;
+            j--;
         }
-        if(van)
-            System.out.println("com.example.helloworld.Palindrome\n");
-        else
+        if (van) {
+            System.out.println("Palindrom\n");
+        } else {
             System.out.println("Nem palindrom\n");
+        }
     }
 }

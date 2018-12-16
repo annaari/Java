@@ -33,7 +33,7 @@ class Jatek {
             }
         }
         if(!win)
-            System.out.println("You lost! com.example.helloworld.Jatek over :(\n The number was: "+n);
+            System.out.println("You lost! Game over :(\n The number was: "+n);
         else
             System.out.println("Congrats! You guessed the number! :)");
     }
