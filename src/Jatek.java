@@ -4,37 +4,50 @@ import java.util.Scanner;
 
 class Jatek {
 
-    public static void game(String[] args) {
-        Random rand = new Random();
-        int n = rand.nextInt(75) + 1;
-
+    void game() {
+        Jatek game = new Jatek();
+        int random = game.random();
+        int life = 3;
+        int number = 0;
         boolean win = false;
-        int elet = 3;
 
-        while (elet != 0 && !win) {
-            Scanner be = new Scanner(System.in);
-            int x = be.nextInt();
-            if (x == n)
-            {
-                win = true;
-            }
-            else if (x > n) {
-
-                elet = elet - 1;
-                System.out.println("Try to think of smaller numbers!");
-                System.out.println("You have "+elet+" live(s) left");
-
-            } else {
-
-                elet = elet - 1;
-                System.out.println("Try to think of bigger numbers!");
-                System.out.println("You have "+elet+" live(s) left ");
-
-            }
+        while (life != 0 && !win) {
+            number = game.input();
+            win = game.win(random, number, life);
+            if (!win)
+                life--;
         }
-        if(!win)
-            System.out.println("You lost! Game over :(\n The number was: "+n);
+
+        if (!win)
+            System.out.println("You lost! Game over :(\n The number was: " + random);
         else
             System.out.println("Congrats! You guessed the number! :)");
+    }
+
+    int random() {
+        Random rand = new Random();
+        return rand.nextInt(75) + 1;
+    }
+
+    int input() {
+        Scanner in = new Scanner(System.in);
+        return in.nextInt();
+    }
+
+    boolean win(int random, int number, int life) {
+        if (random == number) {
+            return true;
+        } else if (random < number) {
+            life--;
+            System.out.println("Try to think of smaller numbers!");
+            System.out.println("You have " + life + " live(s) left");
+
+        } else {
+            life--;
+            System.out.println("Try to think of bigger numbers!");
+            System.out.println("You have " + life + " live(s) left ");
+
+        }
+        return false;
     }
 }

@@ -2,27 +2,34 @@ import java.util.Scanner;
 
 class Palindrome {
 
-    private static int lenght(String[] args) {
-        return args.length;
+    void palindrome() {
+        Palindrome palin = new Palindrome();
+        String string = palin.inputString();
+
+        if (!palin.pal(string)) {
+            System.out.println("Nem palindrom\n");
+        } else {
+            System.out.println("Palindrom\n");
+        }
     }
 
-    public static void palindrom(String[] args) {
-        Scanner be = new Scanner(System.in);
-        String x = be.nextLine();
-        char[] ch = x.toCharArray();
-        int i = 0;
-        int j = lenght(args) - 1;
-        boolean van = true;
-        while (i < j && van) {
-            if (ch[i] != ch[j])
-                van = false;
-            i++;
-            j--;
+    String inputString() {
+        Scanner in = new Scanner(System.in);
+        return in.nextLine();
+    }
+
+    boolean pal(String string) {
+        char[] str = string.toCharArray();
+        int first = 0;
+        int last = string.length() - 1;
+        System.out.println(last);
+        while (first < last) {
+            if (str[first] != str[last]) {
+                return false;
+            }
+            first++;
+            last--;
         }
-        if (van) {
-            System.out.println("Palindrom\n");
-        } else {
-            System.out.println("Nem palindrom\n");
-        }
+        return true;
     }
 }
